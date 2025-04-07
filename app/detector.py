@@ -10,7 +10,7 @@ def analyze_message(text, api_key):
     label, confidence = classify_message(text)
 
     trust = 100
-    if label == "spam" and confidence > 0.6:
+    if label == "spam" and confidence > 0.5:
         trust -= 30
     if dangerous:
         trust -= 40
@@ -18,7 +18,7 @@ def analyze_message(text, api_key):
         trust -= len(heuristic_flags) * 10
 
     return {
-        "verdict": "⚠️ Potential Phishing!" if trust <= 70 else "✅ Safe Message",
+        "verdict": "⚠️ Potential Phishing!" if trust <= 95 else "✅ Safe Message",
         "phishing_confidence": round(confidence, 2),
         "trust_score": trust,
         "heuristic_flags": heuristic_flags,
