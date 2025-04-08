@@ -32,16 +32,16 @@ def run_app():
                 st.markdown("### 💡 Explanation")
                 st.info(explanation)
             try:
-                # st.subheader(result.get("verdict", "No Verdict"))
-                # st.metric("📊 Confidence", result.get("phishing_confidence", "N/A"))
-                # st.metric("🔐 Trust Score", result.get("trust_score", "N/A"))
+                st.subheader(result.get("verdict", "No Verdict"))
+                st.metric("📊 Confidence", result.get("phishing_confidence", "N/A"))
+                st.metric("🔐 Trust Score", result.get("trust_score", "N/A"))
 
-                # st.markdown("### ⚠️ Heuristics")
-                # if result.get("heuristic_flags"):
-                #     for flag in result["heuristic_flags"]:
-                #         st.warning(flag)
-                # else:
-                #     st.success("✅ No heuristic flags found.")
+                st.markdown("### ⚠️ Heuristics")
+                if result.get("heuristic_flags"):
+                    for flag in result["heuristic_flags"]:
+                        st.warning(flag)
+                else:
+                    st.success("✅ No heuristic flags found.")
 
                 st.markdown("### 🌐 URLs Found")
                 if result.get("urls_found"):
